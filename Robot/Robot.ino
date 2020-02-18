@@ -1,4 +1,5 @@
 #include <Servo.h>    //LIbrary for the Servo
+#include <Stepper.h>  //Library for the stepper motors 
 Servo Left_Arm;       //Assign Servo variable Left_Arm
 
 
