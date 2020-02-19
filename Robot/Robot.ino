@@ -3,17 +3,33 @@
 Servo Left_Arm;       //Assign Servo variable Left_Arm
 
 
+const int stepsPerRevolution = 200; // Define number of steps per revolution:
+
+Stepper LeftStepper = Stepper(stepsPerRevolution, 8, 9, 10, 11); // Initialize the stepper library on pins 8 through 11
+
+Stepper RightStepper = Stepper(stepsPerRevolution, 4, 5, 6, 7); // Initialize the stepper library on pins 4 through 7
 void setup() {
   // put your setup code here, to run once:
 
   Left_Arm.attach(3); //Attaches Servo to PIN 3
   PickMyselfUp();
 
+   LeftStepper.setSpeed(100); //sets speed of left stepper
+   RightStepper.setSpeed(100);
 }
 
 void loop() {
   //Wave();
   //PickMyselfUp();
+
+//**************STEPPER TEST*****************************
+   // Step one revolution in one direction:
+  LeftStepper.step(200),RightStepper.step(200);
+  delay(2000);
+  // Step on revolution in the other direction:
+  LeftStepper.step(-200);
+  RightStepper.step(-200);
+  delay(2000);
 }
 
 
